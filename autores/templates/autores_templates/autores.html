@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vista de Autores</title>
+</head>
+<body>
+<h1>Lista de autores</h1>
+{% if autores %}
+    <ul>
+        {% for autor in autores %}
+            <li>{{ autor.nombre }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>no existen datos</p>
+{% endif %}
+<hr>
+<form action="POST" action="{% url 'autores:vista' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre">
+    </div>
+    <div class="form-group">
+        <label for="Telefono">Telefono</label>
+        <input type="text" class="form-control" name="Telefono">
+    </div>
+    <div class="form-group">
+        <label for="correo">correo</label>
+        <input type="text" class="form-control" name="correo">
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad</label>
+        <input type="text" class="form-control" name="Edad">
+    </div>
+    <div>
+        <button type="submit" class="btn"> Crear autor</button>
+    </div>
+
+</form>
+
+</body>
+</html>
